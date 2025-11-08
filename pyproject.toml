@@ -1,13 +1,13 @@
 [project]
 name = "saved"
 version = "1.0.0"
-description = "BackedUp API"
+description = "Saved API"
 authors = [
   {name = "ReOpsLab",email = "team@openapitools.org"},
 ]
 license = "NoLicense"
 readme = "README.md"
-keywords = ["OpenAPI", "OpenAPI-Generator", "BackedUp API"]
+keywords = ["OpenAPI", "OpenAPI-Generator", "Saved API"]
 requires-python = ">=3.9"
 
 dependencies = [

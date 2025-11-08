@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    BackedUp API
+    Saved API
 
     Microservices-based backup and vault management platform with encrypted backups and distributed storage
 
@@ -33,11 +33,11 @@ REQUIRES = [
 setup(
     name=NAME,
     version=VERSION,
-    description="BackedUp API",
+    description="Saved API",
     author="ReOpsLab",
     author_email="team@openapitools.org",
     url="https://github.com/savedhq/sdk-python",
-    keywords=["OpenAPI", "OpenAPI-Generator", "BackedUp API"],
+    keywords=["OpenAPI", "OpenAPI-Generator", "Saved API"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    BackedUp API
+    Saved API
 
     Microservices-based backup and vault management platform with encrypted backups and distributed storage
 
