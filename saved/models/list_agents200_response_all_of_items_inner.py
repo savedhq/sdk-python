@@ -17,7 +17,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -35,7 +36,23 @@ class ListAgents200ResponseAllOfItemsInner(BaseModel):
     client_secret: Optional[StrictStr] = None
     scope: Optional[StrictStr] = None
     public_url: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "workspace_id", "created_at", "updated_at", "client_id", "client_secret", "scope", "public_url"]
+    status: Optional[StrictStr] = Field(default=None, description="Current status of the agent")
+    certificate_cn: Optional[StrictStr] = Field(default=None, description="Certificate common name")
+    certificate_expiry: Optional[datetime] = Field(default=None, description="Certificate expiration date")
+    temporal_namespace: Optional[StrictStr] = Field(default=None, description="Temporal namespace for this agent")
+    temporal_task_queue: Optional[StrictStr] = Field(default=None, description="Temporal task queue name")
+    temporal_host_port: Optional[StrictStr] = Field(default=None, description="Temporal host and port")
+    __properties: ClassVar[List[str]] = ["id", "name", "workspace_id", "created_at", "updated_at", "client_id", "client_secret", "scope", "public_url", "status", "certificate_cn", "certificate_expiry", "temporal_namespace", "temporal_task_queue", "temporal_host_port"]
+
+    @field_validator('status')
+    def status_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['active', 'pending_certificate', 'disabled']):
+            raise ValueError("must be one of enum values ('active', 'pending_certificate', 'disabled')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,7 +113,13 @@ class ListAgents200ResponseAllOfItemsInner(BaseModel):
             "client_id": obj.get("client_id"),
             "client_secret": obj.get("client_secret"),
             "scope": obj.get("scope"),
-            "public_url": obj.get("public_url")
+            "public_url": obj.get("public_url"),
+            "status": obj.get("status"),
+            "certificate_cn": obj.get("certificate_cn"),
+            "certificate_expiry": obj.get("certificate_expiry"),
+            "temporal_namespace": obj.get("temporal_namespace"),
+            "temporal_task_queue": obj.get("temporal_task_queue"),
+            "temporal_host_port": obj.get("temporal_host_port")
         })
         return _obj
 

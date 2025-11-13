@@ -14,6 +14,12 @@ Name | Type | Description | Notes
 **client_secret** | **str** |  | [optional] 
 **scope** | **str** |  | [optional] 
 **public_url** | **str** |  | [optional] 
+**status** | **str** | Current status of the agent | [optional] 
+**certificate_cn** | **str** | Certificate common name | [optional] 
+**certificate_expiry** | **datetime** | Certificate expiration date | [optional] 
+**temporal_namespace** | **str** | Temporal namespace for this agent | [optional] 
+**temporal_task_queue** | **str** | Temporal task queue name | [optional] 
+**temporal_host_port** | **str** | Temporal host and port | [optional] 
 
 ## Example
 
