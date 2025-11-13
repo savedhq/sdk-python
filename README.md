@@ -99,6 +99,7 @@ Class | Method | HTTP request | Description
 *AgentsApi* | [**delete_agent**](docs/AgentsApi.md#delete_agent) | **DELETE** /workspaces/{workspace_id}/agents/{id} | Delete agent
 *AgentsApi* | [**get_agent**](docs/AgentsApi.md#get_agent) | **GET** /workspaces/{workspace_id}/agents/{id} | Get agent by ID
 *AgentsApi* | [**list_agents**](docs/AgentsApi.md#list_agents) | **GET** /workspaces/{workspace_id}/agents | List agents
+*AgentsApi* | [**submit_csr**](docs/AgentsApi.md#submit_csr) | **POST** /workspaces/{workspace_id}/agents/{id}/certificate | Submit CSR and receive signed certificate
 *AgentsApi* | [**update_agent**](docs/AgentsApi.md#update_agent) | **PATCH** /workspaces/{workspace_id}/agents/{id} | Update agent
 *AutomationApi* | [**create_auto_backup**](docs/AutomationApi.md#create_auto_backup) | **POST** /workspaces/{workspace_id}/projects/{project_id}/auto | Create automated backup
 *AutomationApi* | [**delete_auto_backup**](docs/AutomationApi.md#delete_auto_backup) | **DELETE** /workspaces/{workspace_id}/projects/{project_id}/auto/{job_id} | Delete automated backup
@@ -112,6 +113,15 @@ Class | Method | HTTP request | Description
 *BackupsApi* | [**get_backup**](docs/BackupsApi.md#get_backup) | **GET** /workspaces/{workspace_id}/projects/{project_id}/backups/{backup_id} | Get backup by ID
 *BackupsApi* | [**list_backups**](docs/BackupsApi.md#list_backups) | **GET** /workspaces/{workspace_id}/projects/{project_id}/backups | List backups
 *BackupsApi* | [**request_backup_copy**](docs/BackupsApi.md#request_backup_copy) | **POST** /workspaces/{workspace_id}/projects/{project_id}/backups/{backup_id}/download | Request backup copy for download
+*BillingApi* | [**cancel_subscription**](docs/BillingApi.md#cancel_subscription) | **DELETE** /workspaces/{id}/billing/subscription | Cancel subscription
+*BillingApi* | [**create_portal_session**](docs/BillingApi.md#create_portal_session) | **POST** /workspaces/{id}/billing/portal-session | Create Stripe customer portal session
+*BillingApi* | [**create_setup_intent**](docs/BillingApi.md#create_setup_intent) | **POST** /workspaces/{id}/billing/setup-intent | Create setup intent for payment method
+*BillingApi* | [**get_current_usage**](docs/BillingApi.md#get_current_usage) | **GET** /workspaces/{id}/billing/usage/current | Get current billing period usage
+*BillingApi* | [**get_subscription**](docs/BillingApi.md#get_subscription) | **GET** /workspaces/{id}/billing/subscription | Get subscription information
+*BillingApi* | [**list_invoices**](docs/BillingApi.md#list_invoices) | **GET** /workspaces/{id}/billing/invoices | List invoices
+*BillingApi* | [**list_payment_methods**](docs/BillingApi.md#list_payment_methods) | **GET** /workspaces/{id}/billing/payment-methods | List payment methods
+*BillingApi* | [**remove_payment_method**](docs/BillingApi.md#remove_payment_method) | **DELETE** /workspaces/{id}/billing/payment-methods/{pm_id} | Remove payment method
+*BillingApi* | [**set_default_payment_method**](docs/BillingApi.md#set_default_payment_method) | **POST** /workspaces/{id}/billing/payment-methods/{pm_id}/default | Set default payment method
 *KeysApi* | [**create_key**](docs/KeysApi.md#create_key) | **POST** /workspaces/{workspace_id}/keys | Create encryption key
 *KeysApi* | [**delete_key**](docs/KeysApi.md#delete_key) | **DELETE** /workspaces/{workspace_id}/keys/{key_id} | Delete encryption key
 *KeysApi* | [**get_key**](docs/KeysApi.md#get_key) | **GET** /workspaces/{workspace_id}/keys/{key_id} | Get encryption key by ID
@@ -141,6 +151,7 @@ Class | Method | HTTP request | Description
 *StoragesApi* | [**get_storage**](docs/StoragesApi.md#get_storage) | **GET** /workspaces/{workspace_id}/storages/{storage_id} | Get storage by ID
 *StoragesApi* | [**list_storages**](docs/StoragesApi.md#list_storages) | **GET** /workspaces/{workspace_id}/storages | List storages
 *StoragesApi* | [**update_storage**](docs/StoragesApi.md#update_storage) | **PATCH** /workspaces/{workspace_id}/storages/{storage_id} | Update storage
+*WebhooksApi* | [**handle_stripe_webhook**](docs/WebhooksApi.md#handle_stripe_webhook) | **POST** /webhooks/stripe | Stripe webhook handler
 *WorkspacesApi* | [**create_workspace**](docs/WorkspacesApi.md#create_workspace) | **POST** /workspaces | Create workspace
 *WorkspacesApi* | [**delete_workspace**](docs/WorkspacesApi.md#delete_workspace) | **DELETE** /workspaces/{workspace_id} | Delete workspace
 *WorkspacesApi* | [**get_workspace**](docs/WorkspacesApi.md#get_workspace) | **GET** /workspaces/{workspace_id} | Get workspace by ID
@@ -177,8 +188,11 @@ Class | Method | HTTP request | Description
  - [CreateClientSignalJson](docs/CreateClientSignalJson.md)
  - [CreateClientStorageJson](docs/CreateClientStorageJson.md)
  - [CreateKeyRequest](docs/CreateKeyRequest.md)
+ - [CreatePortalSession200Response](docs/CreatePortalSession200Response.md)
+ - [CreatePortalSessionRequest](docs/CreatePortalSessionRequest.md)
  - [CreateProject](docs/CreateProject.md)
  - [CreateProjectRequest](docs/CreateProjectRequest.md)
+ - [CreateSetupIntent200Response](docs/CreateSetupIntent200Response.md)
  - [CreateSignalRequest](docs/CreateSignalRequest.md)
  - [CreateStorageRequest](docs/CreateStorageRequest.md)
  - [CreateWorkspace](docs/CreateWorkspace.md)
@@ -186,6 +200,8 @@ Class | Method | HTTP request | Description
  - [Error](docs/Error.md)
  - [GetAutoBackupHistoryDetails200Response](docs/GetAutoBackupHistoryDetails200Response.md)
  - [GetAutoBackupHistoryDetails200ResponseEventsInner](docs/GetAutoBackupHistoryDetails200ResponseEventsInner.md)
+ - [GetCurrentUsage200Response](docs/GetCurrentUsage200Response.md)
+ - [GetSubscription200Response](docs/GetSubscription200Response.md)
  - [KeyListResponse](docs/KeyListResponse.md)
  - [ListAgents200Response](docs/ListAgents200Response.md)
  - [ListAgents200ResponseAllOfItemsInner](docs/ListAgents200ResponseAllOfItemsInner.md)
@@ -195,8 +211,11 @@ Class | Method | HTTP request | Description
  - [ListAutoBackupExecutions200ResponseExecutionsInner](docs/ListAutoBackupExecutions200ResponseExecutionsInner.md)
  - [ListBackups200Response](docs/ListBackups200Response.md)
  - [ListBackups200ResponseAllOfItemsInner](docs/ListBackups200ResponseAllOfItemsInner.md)
+ - [ListInvoices200ResponseInner](docs/ListInvoices200ResponseInner.md)
  - [ListKeys200Response](docs/ListKeys200Response.md)
  - [ListKeys200ResponseAllOfItemsInner](docs/ListKeys200ResponseAllOfItemsInner.md)
+ - [ListPaymentMethods200ResponseInner](docs/ListPaymentMethods200ResponseInner.md)
+ - [ListPaymentMethods200ResponseInnerCard](docs/ListPaymentMethods200ResponseInnerCard.md)
  - [ListProjects200Response](docs/ListProjects200Response.md)
  - [ListProjects200ResponseAllOfItemsInner](docs/ListProjects200ResponseAllOfItemsInner.md)
  - [ListSignals200Response](docs/ListSignals200Response.md)
@@ -213,6 +232,8 @@ Class | Method | HTTP request | Description
  - [SetProjectKeyRequest](docs/SetProjectKeyRequest.md)
  - [SignalListResponse](docs/SignalListResponse.md)
  - [StorageListResponse](docs/StorageListResponse.md)
+ - [SubmitCSR200Response](docs/SubmitCSR200Response.md)
+ - [SubmitCSRRequest](docs/SubmitCSRRequest.md)
  - [UpdateAutoBackupJson](docs/UpdateAutoBackupJson.md)
  - [UpdateAutoBackupRequest](docs/UpdateAutoBackupRequest.md)
  - [UpdateClientAgent](docs/UpdateClientAgent.md)

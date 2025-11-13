@@ -16,6 +16,7 @@ docs/BackupJobType.md
 docs/BackupListResponse.md
 docs/BackupResponse.md
 docs/BackupsApi.md
+docs/BillingApi.md
 docs/ClientAgentResponse.md
 docs/ClientEncryptionKeyResponse.md
 docs/ClientSignalResponse.md
@@ -33,8 +34,11 @@ docs/CreateClientEncryptionKey.md
 docs/CreateClientSignalJson.md
 docs/CreateClientStorageJson.md
 docs/CreateKeyRequest.md
+docs/CreatePortalSession200Response.md
+docs/CreatePortalSessionRequest.md
 docs/CreateProject.md
 docs/CreateProjectRequest.md
+docs/CreateSetupIntent200Response.md
 docs/CreateSignalRequest.md
 docs/CreateStorageRequest.md
 docs/CreateWorkspace.md
@@ -42,6 +46,8 @@ docs/CreateWorkspaceRequest.md
 docs/Error.md
 docs/GetAutoBackupHistoryDetails200Response.md
 docs/GetAutoBackupHistoryDetails200ResponseEventsInner.md
+docs/GetCurrentUsage200Response.md
+docs/GetSubscription200Response.md
 docs/KeyListResponse.md
 docs/KeysApi.md
 docs/ListAgents200Response.md
@@ -52,8 +58,11 @@ docs/ListAutoBackupExecutions200Response.md
 docs/ListAutoBackupExecutions200ResponseExecutionsInner.md
 docs/ListBackups200Response.md
 docs/ListBackups200ResponseAllOfItemsInner.md
+docs/ListInvoices200ResponseInner.md
 docs/ListKeys200Response.md
 docs/ListKeys200ResponseAllOfItemsInner.md
+docs/ListPaymentMethods200ResponseInner.md
+docs/ListPaymentMethods200ResponseInnerCard.md
 docs/ListProjects200Response.md
 docs/ListProjects200ResponseAllOfItemsInner.md
 docs/ListSignals200Response.md
@@ -73,6 +82,8 @@ docs/SignalListResponse.md
 docs/SignalsApi.md
 docs/StorageListResponse.md
 docs/StoragesApi.md
+docs/SubmitCSR200Response.md
+docs/SubmitCSRRequest.md
 docs/UpdateAutoBackupJson.md
 docs/UpdateAutoBackupRequest.md
 docs/UpdateClientAgent.md
@@ -84,6 +95,7 @@ docs/UpdateProjectRequest.md
 docs/UpdateSignalRequest.md
 docs/UpdateStorageRequest.md
 docs/UpdateWorkspace.md
+docs/WebhooksApi.md
 docs/WorkflowExecution.md
 docs/WorkflowExecutionHistoryResponse.md
 docs/WorkflowExecutionListResponse.md
@@ -99,10 +111,12 @@ saved/api/__init__.py
 saved/api/agents_api.py
 saved/api/automation_api.py
 saved/api/backups_api.py
+saved/api/billing_api.py
 saved/api/keys_api.py
 saved/api/projects_api.py
 saved/api/signals_api.py
 saved/api/storages_api.py
+saved/api/webhooks_api.py
 saved/api/workspaces_api.py
 saved/api_client.py
 saved/api_response.py
@@ -136,8 +150,11 @@ saved/models/create_client_encryption_key.py
 saved/models/create_client_signal_json.py
 saved/models/create_client_storage_json.py
 saved/models/create_key_request.py
+saved/models/create_portal_session200_response.py
+saved/models/create_portal_session_request.py
 saved/models/create_project.py
 saved/models/create_project_request.py
+saved/models/create_setup_intent200_response.py
 saved/models/create_signal_request.py
 saved/models/create_storage_request.py
 saved/models/create_workspace.py
@@ -145,6 +162,8 @@ saved/models/create_workspace_request.py
 saved/models/error.py
 saved/models/get_auto_backup_history_details200_response.py
 saved/models/get_auto_backup_history_details200_response_events_inner.py
+saved/models/get_current_usage200_response.py
+saved/models/get_subscription200_response.py
 saved/models/key_list_response.py
 saved/models/list_agents200_response.py
 saved/models/list_agents200_response_all_of_items_inner.py
@@ -154,8 +173,11 @@ saved/models/list_auto_backup_executions200_response.py
 saved/models/list_auto_backup_executions200_response_executions_inner.py
 saved/models/list_backups200_response.py
 saved/models/list_backups200_response_all_of_items_inner.py
+saved/models/list_invoices200_response_inner.py
 saved/models/list_keys200_response.py
 saved/models/list_keys200_response_all_of_items_inner.py
+saved/models/list_payment_methods200_response_inner.py
+saved/models/list_payment_methods200_response_inner_card.py
 saved/models/list_projects200_response.py
 saved/models/list_projects200_response_all_of_items_inner.py
 saved/models/list_signals200_response.py
@@ -172,6 +194,8 @@ saved/models/set_project_encryption_key.py
 saved/models/set_project_key_request.py
 saved/models/signal_list_response.py
 saved/models/storage_list_response.py
+saved/models/submit_csr200_response.py
+saved/models/submit_csr_request.py
 saved/models/update_auto_backup_json.py
 saved/models/update_auto_backup_request.py
 saved/models/update_client_agent.py

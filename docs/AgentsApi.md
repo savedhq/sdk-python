@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**delete_agent**](AgentsApi.md#delete_agent) | **DELETE** /workspaces/{workspace_id}/agents/{id} | Delete agent
 [**get_agent**](AgentsApi.md#get_agent) | **GET** /workspaces/{workspace_id}/agents/{id} | Get agent by ID
 [**list_agents**](AgentsApi.md#list_agents) | **GET** /workspaces/{workspace_id}/agents | List agents
+[**submit_csr**](AgentsApi.md#submit_csr) | **POST** /workspaces/{workspace_id}/agents/{id}/certificate | Submit CSR and receive signed certificate
 [**update_agent**](AgentsApi.md#update_agent) | **PATCH** /workspaces/{workspace_id}/agents/{id} | Update agent
 
 
@@ -328,6 +329,90 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | List of agents |  -  |
 **401** | Unauthorized - invalid or missing authentication |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **submit_csr**
+> SubmitCSR200Response submit_csr(workspace_id, id, submit_csr_request)
+
+Submit CSR and receive signed certificate
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import saved
+from saved.models.submit_csr200_response import SubmitCSR200Response
+from saved.models.submit_csr_request import SubmitCSRRequest
+from saved.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:8080/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saved.Configuration(
+    host = "http://localhost:8080/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = saved.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with saved.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saved.AgentsApi(api_client)
+    workspace_id = 'workspace_id_example' # str | 
+    id = 'id_example' # str | 
+    submit_csr_request = saved.SubmitCSRRequest() # SubmitCSRRequest | 
+
+    try:
+        # Submit CSR and receive signed certificate
+        api_response = api_instance.submit_csr(workspace_id, id, submit_csr_request)
+        print("The response of AgentsApi->submit_csr:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AgentsApi->submit_csr: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace_id** | **str**|  | 
+ **id** | **str**|  | 
+ **submit_csr_request** | [**SubmitCSRRequest**](SubmitCSRRequest.md)|  | 
+
+### Return type
+
+[**SubmitCSR200Response**](SubmitCSR200Response.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Signed certificate returned |  -  |
+**400** | Bad request - validation error |  -  |
+**401** | Unauthorized - invalid or missing authentication |  -  |
+**404** | Resource not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
